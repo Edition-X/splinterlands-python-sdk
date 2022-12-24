@@ -3,7 +3,7 @@ import requests
 import time
 import json
 
-class SplinterlandsAPI:
+class Api:
     def __init__(self) -> None:
         self.base_url: str = "https://api.splinterlands.com"
         self.cache: dict = {}

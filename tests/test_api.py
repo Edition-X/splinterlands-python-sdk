@@ -2,12 +2,11 @@
 import unittest
 import time
 import sys
-sys.path.insert(0, '..')
-from SplinterlandsAPI import SplinterlandsAPI
+from SplinterlandsSDK.Api import Api
 
 class TestSplinterlandsAPI(unittest.TestCase):
     def setUp(self):
-        self.api = SplinterlandsAPI()
+        self.api = Api()
 
     def test_get_cards(self):
         # Make the API call
@@ -56,7 +55,7 @@ class TestSplinterlandsAPI(unittest.TestCase):
             self.assertIn(key, settings)
 
     def test_get_specific_cards(self):
-        api = SplinterlandsAPI()
+        api = Api()
         uid = "C3-79-UUT7TSLVN4"
         expected_output = [
             {

@@ -3,7 +3,7 @@ import unittest
 import time
 import sys
 sys.path.insert(0, '..')
-from Card import Card
+from SplinterlandsSDK.Card import Card
 
 class TestCard(unittest.TestCase):
     def setUp(self):
