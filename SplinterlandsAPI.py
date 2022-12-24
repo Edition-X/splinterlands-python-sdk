@@ -22,3 +22,7 @@ class SplinterlandsAPI:
     def get_cards(self):
         endpoint = "cards/get_details"
         return self._make_request(endpoint)
+
+    def get_settings(self):
+        endpoint = "settings"
+        return self._make_request(endpoint)
