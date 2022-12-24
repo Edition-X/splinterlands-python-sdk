@@ -41,5 +41,19 @@ class TestSplinterlandsAPI(unittest.TestCase):
         # Verify that the second call was much faster than the first, indicating that it was served from the cache
         self.assertLess(elapsed_time2, elapsed_time1 / 10)
 
+    def test_get_settings(self):
+        # Get the settings from the API
+        settings = self.api.get_settings()
+        # Assert that the settings are returned as a dictionary
+        self.assertIsInstance(settings, dict)
+        # Assert that the expected keys are present in the dictionary
+        expected_keys = ["asset_url", "gold_percent", "starter_pack_price", "booster_pack_price", "market_fee", "num_editions",
+                         "modern_num_editions", "core_editions", "starter_editions", "soulbound_editions", "event_creation_whitelist",
+                         "ghost_creation_whitelist", "bat_event_list", "event_entry_fee_required", "max_event_entrants", "tournaments_creation_fee_dec",
+                         "account", "stats", "rarity_pcts", "xp_levels", "alpha_xp", "gold_xp", "beta_xp", "beta_gold_xp", "combine_rates",
+                         "combine_rates_gold", "battles"]
+        for key in expected_keys:
+            self.assertIn(key, settings)
+
 if __name__ == '__main__':
     unittest.main()
