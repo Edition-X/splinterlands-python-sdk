@@ -55,5 +55,73 @@ class TestSplinterlandsAPI(unittest.TestCase):
         for key in expected_keys:
             self.assertIn(key, settings)
 
+    def test_get_specific_cards(self):
+        api = SplinterlandsAPI()
+        uid = "C3-79-UUT7TSLVN4"
+        expected_output = [
+            {
+                "uid": "C3-79-UUT7TSLVN4",
+                "card_detail_id": 79,
+                "player": "kiokizz.spt",
+                "xp": 0,
+                "combined_card_id": "C3-79-SYV98UHO68",
+                "gold": False,
+                "edition": 3,
+                "alpha_xp": None,
+                "details": {
+                "id": 79,
+                "name": "Highland Archer",
+                "color": "Gray",
+                "type": "Monster",
+                "sub_type": None,
+                "rarity": 1,
+                "drop_rate": 0,
+                "stats": {
+                "mana": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+                "attack": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "ranged": [1, 1, 1, 2, 2, 2, 2, 2, 3, 3],
+                "magic": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "armor": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "health": [2, 2, 3, 3, 3, 4, 4, 5, 4, 5],
+                "speed": [1, 2, 2, 2, 3, 3, 4, 4, 4, 4],
+                "abilities": [[], [], [], [], [], [], [], [], [], []],
+            },
+                "is_starter": False,
+                "editions": "3",
+                "created_block_num": None,
+                "last_update_tx": None,
+                "total_printed": 400004,
+                "is_promo": False,
+                "tier": None,
+                "distribution": [
+            {
+                "card_detail_id": 79,
+                "gold": False,
+                "edition": 3,
+                "num_cards": "52989",
+                "total_xp": "3530775",
+                "num_burned": "36153",
+                "total_burned_xp": "1005420",
+            },
+            {
+                "card_detail_id": 79,
+                "gold": True,
+                "edition": 3,
+                "num_cards": "2307",
+                "total_xp": "1058200",
+                "num_burned": "1441",
+                "total_burned_xp": "631600",
+            },
+            ],
+            },
+                "last_used_block": None,
+                "last_used_player": None,
+                "last_used_date": None,
+            }
+        ]
+        actual_output = api.get_specific_cards(uid)
+        self.assertEqual(actual_output, expected_output)
+
+
 if __name__ == '__main__':
     unittest.main()
