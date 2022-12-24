@@ -44,5 +44,5 @@ class SplinterlandsAPI:
         return self._make_request(endpoint)
 
     def get_specific_cards(self, uid):
-        endpoint = f"find?ids={uid}"
+        endpoint = f"cards/find?ids={uid}"
         return self._make_request(endpoint)
