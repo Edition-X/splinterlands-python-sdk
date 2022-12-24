@@ -42,3 +42,7 @@ class SplinterlandsAPI:
     def get_settings(self):
         endpoint = "settings"
         return self._make_request(endpoint)
+
+    def get_specific_cards(self, uid):
+        endpoint = f"find?ids={uid}"
+        return self._make_request(endpoint)
