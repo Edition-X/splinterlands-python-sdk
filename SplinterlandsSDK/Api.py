@@ -54,3 +54,7 @@ class Api:
     def get_transaction(self, trx_id: str) -> Union[dict, List]:
         endpoint: str = f"transactions/lookup?trx_id={trx_id}"
         return self._make_request(endpoint)
+
+    def get_player_market_history(self, player: str) -> Union[dict, List]:
+        endpoint: str = f"market/history?player={player}"
+        return self._make_request(endpoint)

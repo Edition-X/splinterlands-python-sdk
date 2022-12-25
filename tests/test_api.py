@@ -133,5 +133,11 @@ class TestSplinterlandsAPI(unittest.TestCase):
         result = self.api.get_transaction(trx_id)
         assert isinstance(result, dict)
 
+    def test_get_player_market_history(self):
+        player = "edition-x"
+        result = self.api.get_player_market_history(player)
+        assert isinstance(result, list)
+
+
 if __name__ == '__main__':
     unittest.main()
