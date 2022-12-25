@@ -127,6 +127,11 @@ class TestSplinterlandsAPI(unittest.TestCase):
         # Verify that the result is a dictionary
         assert isinstance(result, list)
 
+    def test_get_transaction(self):
+        # Set up test data
+        trx_id = "09c8ac9db08d246696fa795cbf03ff07b83303e6"
+        result = self.api.get_transaction(trx_id)
+        assert isinstance(result, dict)
 
 if __name__ == '__main__':
     unittest.main()

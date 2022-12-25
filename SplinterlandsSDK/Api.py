@@ -50,3 +50,7 @@ class Api:
     def get_for_sale_grouped(self) -> Union[dict, List]:
         endpoint: str = "market/for_sale_grouped"
         return self._make_request(endpoint)
+
+    def get_transaction(self, trx_id: str) -> Union[dict, List]:
+        endpoint: str = f"transactions/lookup?trx_id={trx_id}"
+        return self._make_request(endpoint)
