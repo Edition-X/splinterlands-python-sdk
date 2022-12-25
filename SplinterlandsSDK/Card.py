@@ -30,3 +30,39 @@ class Card:
             if card['id'] == card_id:
                 return cls(card)
         raise ValueError(f"Card with ID {card_id} not found")
+
+    def get_rarities(self) -> dict:
+        rarities: dict = {
+            1: "common",
+            2: "rare",
+            3: "epic",
+            4: "legendary"
+        }
+        return rarities
+
+    def get_colors(self) -> dict:
+        colors: dict = {
+            "Red": "fire",
+            "Blue": "water",
+            "Green": "earth",
+            "White": "life",
+            "Black": "death",
+            "Gold": "dragon",
+            "Gray": "neutral"
+        }
+        return colors
+
+    def get_editions(self) -> dict:
+        editions: dict = {
+            "alpha": 0,
+            "beta": 1,
+            "promo": 2,
+            "reward": 3,
+            "untamed": 4,
+            "dice": 5,
+            "chaos": 7,
+            "rift": 8
+        }
+        return editions
+
+
