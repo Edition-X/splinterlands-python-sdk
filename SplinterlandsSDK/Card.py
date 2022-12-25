@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 class Card:
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def get_rarities() -> dict:
+    @classmethod
+    def get_rarities(cls) -> dict:
         rarities: dict = {
             1: "common",
             2: "rare",
@@ -13,8 +10,8 @@ class Card:
         }
         return rarities
 
-    @staticmethod
-    def get_colors() -> dict:
+    @classmethod
+    def get_colors(cls) -> dict:
         colors: dict = {
             "Red": "fire",
             "Blue": "water",
@@ -26,8 +23,8 @@ class Card:
         }
         return colors
 
-    @staticmethod
-    def get_editions() -> dict:
+    @classmethod
+    def get_editions(cls) -> dict:
         editions: dict = {
             "alpha": 0,
             "beta": 1,
