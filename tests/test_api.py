@@ -55,7 +55,6 @@ class TestSplinterlandsAPI(unittest.TestCase):
             self.assertIn(key, settings)
 
     def test_get_specific_cards(self):
-        api = Api()
         uid = "C3-79-UUT7TSLVN4"
         expected_output = [
             {
@@ -118,8 +117,15 @@ class TestSplinterlandsAPI(unittest.TestCase):
                 "last_used_date": None,
             }
         ]
-        actual_output = api.get_specific_cards(uid)
+        actual_output = self.api.get_specific_cards(uid)
         self.assertEqual(actual_output, expected_output)
+
+    def test_get_for_sale_grouped(self):
+        # Invoke the get_for_sale_grouped function
+        result = self.api.get_for_sale_grouped()
+
+        # Verify that the result is a dictionary
+        assert isinstance(result, list)
 
 
 if __name__ == '__main__':

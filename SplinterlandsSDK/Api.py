@@ -1,4 +1,5 @@
 #/usr/bin/env python3
+from typing import List, Union
 import requests
 import time
 import json
@@ -13,10 +14,11 @@ class Api:
         return {
         }
 
-    def _make_request(self, endpoint: str, params: dict = {}) -> dict:
+    def _make_request(self, endpoint: str, params: dict = {}) -> Union[dict, List]:
         # Check if the data is already in the cache
         cache_key: str = f"{endpoint}:{json.dumps(params)}"
-        if cache_key in self.cache:
+        # if  endpoint != "market/for_sale_grouped" and cache_key in self.cache:
+        if  cache_key in self.cache:
             cached_data, cache_timestamp = self.cache[cache_key]
             age = time.time() - cache_timestamp
             if age < 300:  # 5 minutes
@@ -33,14 +35,18 @@ class Api:
         self.cache[cache_key] = (data, time.time())
         return data
 
-    def get_cards(self) -> dict:
+    def get_cards(self) -> Union[dict, List]:
         endpoint: str = "cards/get_details"
         return self._make_request(endpoint)
 
-    def get_settings(self) -> dict:
+    def get_settings(self) -> Union[dict, List]:
         endpoint: str = "settings"
         return self._make_request(endpoint)
 
-    def get_specific_cards(self, uid: str) -> dict:
+    def get_specific_cards(self, uid: str) -> Union[dict, List]:
         endpoint: str = f"cards/find?ids={uid}"
+        return self._make_request(endpoint)
+
+    def get_for_sale_grouped(self) -> Union[dict, List]:
+        endpoint: str = "market/for_sale_grouped"
         return self._make_request(endpoint)
