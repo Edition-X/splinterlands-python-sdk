@@ -23,7 +23,7 @@ class Card:
         self.tier = data['tier']
         self.distribution = data['distribution']
 
-    @classmethod
+    @staticmethod
     def get_card_info(cls, api, card_id):
         cards = api.get_cards()
         for card in cards:
@@ -31,7 +31,7 @@ class Card:
                 return cls(card)
         raise ValueError(f"Card with ID {card_id} not found")
 
-    @classmethod
+    @staticmethod
     def get_rarities(cls) -> dict:
         rarities: dict = {
             1: "common",
@@ -41,7 +41,7 @@ class Card:
         }
         return rarities
 
-    @classmethod
+    @staticmethod
     def get_colors(cls) -> dict:
         colors: dict = {
             "Red": "fire",
