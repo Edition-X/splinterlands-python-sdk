@@ -31,8 +31,8 @@ class Card:
                 return cls(card)
         raise ValueError(f"Card with ID {card_id} not found")
 
-    @staticmethod
-    def get_rarities() -> dict:
+    @classmethod
+    def get_rarities(cls) -> dict:
         rarities: dict = {
             1: "common",
             2: "rare",
