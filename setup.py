@@ -3,10 +3,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='SplinterlandsSDK',  # name of the package
-    version='0.1.7',
+    version='0.1.8',
     packages=find_packages(),  # list of packages to include in the package
     py_modules=['SplinterlandsSDK'],
-    install_requires=['requests'],  # list of dependencies
+    install_requires=['requests', 'beem', 'cryptography'],  # list of dependencies
     author='Daniel J Kelly',  # your name
     author_email='danielkelly89@gmail.com',  # your email
     description='A Python library for interacting with the Splinterlands API',  # a short description of the package
