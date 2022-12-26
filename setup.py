@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='SplinterlandsSDK',  # name of the package
-    version='0.1.9',
+    version='0.1.8',
     packages=find_packages(),  # list of packages to include in the package
     py_modules=['SplinterlandsSDK'],
     install_requires=['requests', 'beem', 'cryptography'],  # list of dependencies
