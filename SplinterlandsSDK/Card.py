@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
 from SplinterlandsSDK import Api
+#!/usr/bin/env python3
 class Card:
 
     def __init__(self, cardid, gold=False) -> None:

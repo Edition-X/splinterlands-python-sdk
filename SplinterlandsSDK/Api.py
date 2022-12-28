@@ -15,11 +15,24 @@ class Api:
         }
 
     def _make_request(self, endpoint: str, params: dict = {}) -> Union[dict, List]:
+        # Check if the data is already in the cache
+        cache_key: str = f"{endpoint}:{json.dumps(params)}"
+        # if  endpoint != "market/for_sale_grouped" and cache_key in self.cache:
+        if  cache_key in self.cache:
+            cached_data, cache_timestamp = self.cache[cache_key]
+            age = time.time() - cache_timestamp
+            if age < 300:  # 5 minutes
+                return cached_data
+
+        # If the data is not in the cache, make the API request
         url: str = f"{self.base_url}/{endpoint}"
         response: requests.Response = requests.get(url, params=params, headers=self._get_headers())
         if response.status_code != 200:
             raise Exception(f"Request to {url} failed with status code {response.status_code}")
         data: dict = response.json()
+
+        # Save the data in the cache
+        self.cache[cache_key] = (data, time.time())
         return data
 
     def get_cards(self) -> Union[dict, List]:
