@@ -1,5 +1,19 @@
+from SplinterlandsSDK import Api
 #!/usr/bin/env python3
 class Card:
+
+    def __init__(self, cardid, gold=False) -> None:
+        self.api = Api()
+        self.cardid = cardid
+        self.gold = gold
+        self.name = self.get_name()
+
+    def get_name(self):
+        self.all_cards = self.api.get_cards()
+        for card in self.all_cards:
+            if card["id"] == self.cardid:
+                return card["name"]
+
     @classmethod
     def get_rarities(cls) -> dict:
         rarities: dict = {
