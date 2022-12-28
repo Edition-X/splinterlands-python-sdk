@@ -19,9 +19,9 @@ class Api:
         url: str = f"{self.base_url}/{endpoint}"
         response: requests.Response = requests.get(url, params=params, headers=self._get_headers())
         if response.status_code != 200:
-            raise Exception(f"Request to {url} failed with status code {response.status_code}")
+            print(f"Request to {url} failed with status code {response.status_code}")
+            return []
         data: dict = response.json()
-
         return data
 
     def get_cards(self) -> Union[dict, List]:
@@ -31,13 +31,14 @@ class Api:
         if  cache_key in self.cache:
             cached_data, cache_timestamp = self.cache[cache_key]
             age = time.time() - cache_timestamp
-            if age < (30 * 24 * 60 * 60):  # 5 minutes
+            if age < (30 * 24 * 60 * 60):  # 30 days
                 return cached_data
-
+        # Make the API request
         data = self._make_request(endpoint)
         # Save the data in the cache
         self.cache[cache_key] = (data, time.time())
         return data
+
 
     def get_settings(self) -> Union[dict, List]:
         endpoint: str = "settings"

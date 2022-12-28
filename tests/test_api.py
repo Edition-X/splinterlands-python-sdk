@@ -1,7 +1,6 @@
 #/usr/bin/env python3
 import unittest
 import time
-import sys
 from SplinterlandsSDK.Api import Api
 
 class TestSplinterlandsAPI(unittest.TestCase):
@@ -137,7 +136,6 @@ class TestSplinterlandsAPI(unittest.TestCase):
         player = "edition-x"
         result = self.api.get_player_market_history(player)
         assert isinstance(result, list)
-
 
 if __name__ == '__main__':
     unittest.main()
