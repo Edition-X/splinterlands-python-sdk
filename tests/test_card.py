@@ -16,5 +16,8 @@ class TestCard(unittest.TestCase):
     def test_get_min_price_bcx(self):
         self.assertTrue(isinstance(self.card.low_price_bcx, float))
 
+    def test_get_min_price(self):
+        self.assertTrue(isinstance(self.card.low_price, float))
+
 if __name__ == '__main__':
     unittest.main()
