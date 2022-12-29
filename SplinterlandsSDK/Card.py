@@ -3,16 +3,20 @@ from SplinterlandsSDK import Api
 class Card:
 
     def __init__(self, cardid, gold=False) -> None:
-        self.api = Api()
-        self.cardid = cardid
-        self.gold = gold
-        self.name = self.get_name()
+        self.api           = Api()
+        self.cardid        = cardid
+        self.gold          = gold
+        self.name          = self.get_name()
+        self.low_price_bcx = self.get_low_price_bcx()
 
     def get_name(self):
         self.all_cards = self.api.get_cards()
-        for card in self.all_cards:
-            if card["id"] == self.cardid:
-                return card["name"]
+        return next(card["name"] for card in self.all_cards if card["id"] == self.cardid)
+
+    def get_low_price_bcx(self):
+        self.sale_data = self.api.get_for_sale_grouped()
+        return next(card["low_price_bcx"] for card in self.sale_data if card["card_detail_id"] == self.cardid and card["gold"] == self.gold)
+
 
     @classmethod
     def get_rarities(cls) -> dict:
